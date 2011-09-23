@@ -8,6 +8,7 @@ using System.Windows.Data;
 using System.Windows.Media;
 using Rholiver.Mvvm.Infrastructure;
 using Rholiver.Mvvm.Models;
+using Rholiver.Mvvm.Navigation;
 
 namespace Rholiver.Mvvm.Views
 {
@@ -43,6 +44,11 @@ namespace Rholiver.Mvvm.Views
                     continue;
 
                 var binding = new Binding(element.Name) {Mode = BindingMode.TwoWay};
+
+                if(property.PropertyType == typeof(IElementManager)) {
+                    binding.Converter = new ElementManagerConverter();
+                }
+
 
                 var binder = _binderProvider.GetFor(element);
 

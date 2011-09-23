@@ -36,6 +36,7 @@ namespace Rholiver.Mvvm
             kernel.Bind<IEventAggregator>().To<EventAggregator>().InSingletonScope();
             kernel.Components.Add<IActivationStrategy, SubcribeToEventAggregatorStrategy>();
             kernel.Bind<IDialogManager>().To<DialogManager>();
+            kernel.Bind<IElementManager>().To<ElementManager>();
 
             kernel.Bind(typeof (IProvider<,>)).To(typeof (NinjectProvider<,>));
 
