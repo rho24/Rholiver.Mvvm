@@ -1,0 +1,15 @@
+﻿<controls:ChildWindow x:Class="Rholiver.Mvvm.Examples.Navigation.Views.SimpleDialog"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           Width="400" Height="300" 
+           Title="SimpleDialog">
+    <Grid x:Name="LayoutRoot" Margin="2">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+    <TextBlock FontSize="32" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0">Simple Dialog</TextBlock>
+        <Button Name="Ok" Content="Ok" Width="50" HorizontalAlignment="Right" Grid.Row="1" />
+    </Grid>
+</controls:ChildWindow>
