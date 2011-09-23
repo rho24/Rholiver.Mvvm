@@ -8,5 +8,9 @@
     
   <StackPanel Height="400" Width="500" Background="LightGray">
     <Button Name="OpenSimpleDialog" Content="Open Simple Dialog" FontSize="20" />
+    <StackPanel Orientation="Horizontal">
+      <Button Name="OpenReturningDialog" Content="Open Returning Dialog" FontSize="20" />
+      <TextBlock Name="DialogReturnResult" FontSize="24" Margin="20,0,0,0" VerticalAlignment="Center" />
+    </StackPanel>
   </StackPanel>
 </UserControl>
