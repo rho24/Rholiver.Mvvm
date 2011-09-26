@@ -47,6 +47,9 @@ namespace Rholiver.Mvvm
             kernel.Bind<IPropertyBinder>().ToConstant(new ControlBinder<ItemsControl> {ControlProperty = ItemsControl.ItemsSourceProperty});
             kernel.Bind<IPropertyBinder>().ToConstant(new ControlBinder<Button> {ControlProperty = ContentControl.ContentProperty});
             
+            kernel.Bind<DefaultConverter>().ToConstant(new DefaultConverter(typeof (IElementManager), new ElementManagerConverter()));
+            kernel.Bind<DefaultConverter>().ToConstant(new DefaultConverter(typeof (IMultiElementManager), new MultiElementManagerConverter()));
+
             InitialiseDependancies(kernel);
 
             return kernel;

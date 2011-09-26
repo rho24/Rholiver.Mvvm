@@ -17,9 +17,11 @@ namespace Rholiver.Mvvm.Views
     public class ViewWeaver : IViewWeaver
     {
         private readonly IProvider<IPropertyBinder, FrameworkElement> _binderProvider;
+        private readonly IEnumerable<DefaultConverter> _defaultConverters;
 
-        public ViewWeaver(IProvider<IPropertyBinder, FrameworkElement> binderProvider) {
+        public ViewWeaver(IProvider<IPropertyBinder, FrameworkElement> binderProvider, IEnumerable<DefaultConverter> defaultConverters) {
             _binderProvider = binderProvider;
+            _defaultConverters = defaultConverters;
         }
 
         public void Weave(UIElement view, IViewModel viewModel) {
@@ -45,10 +47,12 @@ namespace Rholiver.Mvvm.Views
                 if (property == null)
                     continue;
 
-                var binding = new Binding(element.Name) {Mode = BindingMode.TwoWay};
+                var binding = new Binding(element.Name) {
+                                                            Mode = BindingMode.TwoWay,
+                                                            Converter = _defaultConverters.Where(c => c.Type == property.PropertyType)
+                                                                .Select(c => c.Converter).FirstOrDefault()
+                                                        };
 
-                if (property.PropertyType == typeof (IElementManager)) binding.Converter = new ElementManagerConverter();
-                if (property.PropertyType == typeof (IMultiElementManager)) binding.Converter = new MultiElementManagerConverter();
 
                 var binder = _binderProvider.GetFor(element);
 
@@ -95,6 +99,17 @@ namespace Rholiver.Mvvm.Views
             }
 
             yield break;
+        }
+    }
+
+    public class DefaultConverter
+    {
+        public Type Type { get; set; }
+        public IValueConverter Converter { get; set; }
+
+        public DefaultConverter(Type type, IValueConverter converter) {
+            Type = type;
+            Converter = converter;
         }
     }
 
