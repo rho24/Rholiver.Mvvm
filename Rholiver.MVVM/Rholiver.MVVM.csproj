@@ -80,6 +80,7 @@
     <Compile Include="Navigation\IElementManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubcribeToEventAggregatorStrategy.cs" />
+    <Compile Include="Views\ControlBinder.cs" />
     <Compile Include="Views\IPropertyBinder.cs" />
     <Compile Include="Views\IViewBuilder.cs" />
     <Compile Include="Views\IViewLocator.cs" />
