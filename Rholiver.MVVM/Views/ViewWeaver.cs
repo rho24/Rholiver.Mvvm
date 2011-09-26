@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -46,6 +48,7 @@ namespace Rholiver.Mvvm.Views
                 var binding = new Binding(element.Name) {Mode = BindingMode.TwoWay};
 
                 if (property.PropertyType == typeof (IElementManager)) binding.Converter = new ElementManagerConverter();
+                if (property.PropertyType == typeof (IMultiElementManager)) binding.Converter = new MultiElementManagerConverter();
 
                 var binder = _binderProvider.GetFor(element);
 
@@ -92,6 +95,22 @@ namespace Rholiver.Mvvm.Views
             }
 
             yield break;
+        }
+    }
+
+    public class MultiElementManagerConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+            var manager = value as IMultiElementManager;
+
+            if (manager == null)
+                return value;
+
+            return manager.ElementValues;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
+            throw new NotImplementedException();
         }
     }
 }

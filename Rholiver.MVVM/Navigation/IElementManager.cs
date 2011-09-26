@@ -1,7 +1,6 @@
 using System;
 using System.Windows;
 using Rholiver.Mvvm.Models;
-using Rholiver.Mvvm.Views;
 
 namespace Rholiver.Mvvm.Navigation
 {
@@ -10,28 +9,6 @@ namespace Rholiver.Mvvm.Navigation
         UIElement ElementValue { get; }
         void NavigateTo<T>() where T : IViewModel;
         void Initialize(Action onChange);
-    }
-
-    public class ElementManager : IElementManager
-    {
-        private readonly IViewBuilder _viewBuilder;
-        private Action _onChange;
-
-        public ElementManager(IViewBuilder viewBuilder) {
-            _viewBuilder = viewBuilder;
-        }
-
-        public void Initialize(Action onChange) {
-            _onChange = onChange;
-        }
-
-        public UIElement ElementValue { get; private set; }
-
-        public void NavigateTo<T>() where T : IViewModel {
-            var modelAndView = _viewBuilder.Build<T>();
-
-            ElementValue = modelAndView.View;
-            _onChange();
-        }
+        void Clear();
     }
 }

@@ -37,14 +37,16 @@ namespace Rholiver.Mvvm
             kernel.Components.Add<IActivationStrategy, SubcribeToEventAggregatorStrategy>();
             kernel.Bind<IDialogManager>().To<DialogManager>();
             kernel.Bind<IElementManager>().To<ElementManager>();
+            kernel.Bind<IMultiElementManager>().To<MultiElementManager>();
 
             kernel.Bind(typeof (IProvider<,>)).To(typeof (NinjectProvider<,>));
 
             kernel.Bind<IPropertyBinder>().ToConstant(new ControlBinder<TextBlock> {ControlProperty = TextBlock.TextProperty});
             kernel.Bind<IPropertyBinder>().ToConstant(new ControlBinder<TextBox> {ControlProperty = TextBox.TextProperty});
             kernel.Bind<IPropertyBinder>().ToConstant(new ControlBinder<ContentControl> {ControlProperty = ContentControl.ContentProperty});
+            kernel.Bind<IPropertyBinder>().ToConstant(new ControlBinder<ItemsControl> {ControlProperty = ItemsControl.ItemsSourceProperty});
             kernel.Bind<IPropertyBinder>().ToConstant(new ControlBinder<Button> {ControlProperty = ContentControl.ContentProperty});
-
+            
             InitialiseDependancies(kernel);
 
             return kernel;

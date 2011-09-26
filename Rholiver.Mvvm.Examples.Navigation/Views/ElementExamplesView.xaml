@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="Rholiver.Mvvm.Examples.Navigation.Views.ElementExamplesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="400">
+
+  <StackPanel>
+    <toolkit:DockPanel>
+      <TextBlock toolkit:DockPanel.Dock="Top">Single Element</TextBlock>
+      <ToggleButton Name="ShowSingleElement" Content="Show Single Element" IsChecked="{Binding SingleElementIsChecked, Mode=TwoWay}" />
+      <ContentControl Name="SingleElement" />
+    </toolkit:DockPanel>
+    <toolkit:DockPanel>
+      <TextBlock toolkit:DockPanel.Dock="Top">Multiple Elements</TextBlock>
+      <Button Name="AddMultipleElement" Content="Add Element" />
+      <Button Name="RemoveMultipleElement" Content="Remove Element" />
+      <ItemsControl Name="MultipleElements" />
+    </toolkit:DockPanel>
+  </StackPanel>
+</UserControl>

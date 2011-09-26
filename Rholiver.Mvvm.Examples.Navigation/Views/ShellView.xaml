@@ -9,6 +9,7 @@
   <StackPanel Height="400" Width="500" Background="LightGray">
     <StackPanel Orientation="Horizontal" Height="30">
       <Button Name="DialogExamples" Content="Dialog Examples" />
+      <Button Name="ElementExamples" Content="Element Examples" />
     </StackPanel>
     <ContentControl Name="ExamplesPage" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" />
   </StackPanel>

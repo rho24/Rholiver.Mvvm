@@ -15,5 +15,9 @@ namespace Rholiver.Mvvm.Examples.Navigation.Models
         public void DialogExamples() {
             ExamplesPage.NavigateTo<DialogExamplesViewModel>();
         }
+
+        public void ElementExamples() {
+            ExamplesPage.NavigateTo<ElementExamplesViewModel>();
+        }
     }
 }
