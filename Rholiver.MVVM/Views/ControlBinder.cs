@@ -5,14 +5,14 @@ namespace Rholiver.Mvvm.Views
 {
     internal class ControlBinder<T> : IPropertyBinder where T : FrameworkElement
     {
+        public DependencyProperty ControlProperty { get; set; }
+
         public bool CanProcess(FrameworkElement input) {
             return input is T;
         }
 
-        public void Bind(FrameworkElement element, Binding binding) {
+        public void BindIfNotAlready(FrameworkElement element, Binding binding) {
             BindingOperations.SetBinding(element, ControlProperty, binding);
         }
-
-        public DependencyProperty ControlProperty { get; set; }
     }
 }

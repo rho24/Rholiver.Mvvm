@@ -6,6 +6,6 @@ namespace Rholiver.Mvvm.Views
 {
     public interface IPropertyBinder : ICanProcess<FrameworkElement>
     {
-        void Bind(FrameworkElement element, Binding binding);
+        void BindIfNotAlready(FrameworkElement element, Binding binding);
     }
 }

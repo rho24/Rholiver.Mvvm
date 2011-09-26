@@ -1,9 +1,8 @@
 ﻿<Application xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:Navigation="clr-namespace:Rholiver.Mvvm.Examples.Navigation"
-             x:Class="Rholiver.Mvvm.Examples.Navigation.App"
-             >
-    <Application.Resources>
+             x:Class="Rholiver.Mvvm.Examples.Navigation.App">
+  <Application.Resources>
     <Navigation:AppBootstrapper x:Key="Bootstrapper" />
   </Application.Resources>
 </Application>

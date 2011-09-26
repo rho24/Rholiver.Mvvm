@@ -10,7 +10,7 @@ namespace Rholiver.Mvvm.Infrastructure
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             var manager = value as IElementManager;
 
-            if(manager == null)
+            if (manager == null)
                 return value;
 
             return manager.ElementValue;

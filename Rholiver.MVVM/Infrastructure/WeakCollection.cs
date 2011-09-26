@@ -9,6 +9,10 @@ namespace Rholiver.Mvvm.Infrastructure
     {
         private readonly ICollection<WeakReference> _collection;
 
+        private IEnumerable<T> AliveObjects {
+            get { return _collection.Where(w => w.IsAlive).Select(w => (T) w.Target); }
+        }
+
         public WeakCollection() {
             _collection = new List<WeakReference>();
         }
@@ -48,10 +52,6 @@ namespace Rholiver.Mvvm.Infrastructure
 
         public bool IsReadOnly {
             get { return false; }
-        }
-
-        private IEnumerable<T> AliveObjects {
-            get { return _collection.Where(w => w.IsAlive).Select(w => (T) w.Target); }
         }
     }
 }

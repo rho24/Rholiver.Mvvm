@@ -3,15 +3,11 @@ using Rholiver.Mvvm.Navigation;
 
 namespace Rholiver.Mvvm.Examples.Navigation.Models
 {
-    public class DialogExamplesViewModel:ViewModelBase
+    public class DialogExamplesViewModel : ViewModelBase
     {
         private readonly IDialogManager _dialogManager;
 
         private string _dialogReturnResult;
-
-        public DialogExamplesViewModel(IDialogManager dialogManager) {
-            _dialogManager = dialogManager;
-        }
 
         public string DialogReturnResult {
             get { return _dialogReturnResult; }
@@ -19,6 +15,10 @@ namespace Rholiver.Mvvm.Examples.Navigation.Models
                 _dialogReturnResult = value;
                 NotifyPropertyChange(() => DialogReturnResult);
             }
+        }
+
+        public DialogExamplesViewModel(IDialogManager dialogManager) {
+            _dialogManager = dialogManager;
         }
 
         public void OpenSimpleDialog() {

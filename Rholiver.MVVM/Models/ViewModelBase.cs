@@ -6,6 +6,8 @@ namespace Rholiver.Mvvm.Models
 {
     public abstract class ViewModelBase : IViewModel, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         protected void NotifyPropertyChange(Expression<Func<object>> propertyExpression) {
             var body = propertyExpression.Body;
 
@@ -13,8 +15,6 @@ namespace Rholiver.Mvvm.Models
             var propertyName = ((MemberExpression) body).Member.Name;
             OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public void OnPropertyChanged(PropertyChangedEventArgs e) {
             PropertyChangedEventHandler handler = PropertyChanged;

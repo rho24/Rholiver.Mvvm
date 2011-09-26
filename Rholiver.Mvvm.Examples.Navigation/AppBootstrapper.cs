@@ -2,8 +2,6 @@
 
 namespace Rholiver.Mvvm.Examples.Navigation
 {
-    public class AppBootstrapper:Bootstrapper<ShellViewModel>
-    {
-         
-    }
+    public class AppBootstrapper : Bootstrapper<ShellViewModel>
+    {}
 }

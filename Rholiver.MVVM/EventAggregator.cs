@@ -8,8 +8,8 @@ namespace Rholiver.Mvvm
 {
     public class EventAggregator : IEventAggregator
     {
-        private readonly ICollection<ISubscriber> _subscribers;
         private readonly Dispatcher _dispatcher;
+        private readonly ICollection<ISubscriber> _subscribers;
 
         public EventAggregator(Dispatcher dispatcher) {
             _dispatcher = dispatcher;
