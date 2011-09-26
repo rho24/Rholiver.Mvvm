@@ -12,7 +12,8 @@ namespace Rholiver.Mvvm.Views
         }
 
         public void BindIfNotAlready(FrameworkElement element, Binding binding) {
-            BindingOperations.SetBinding(element, ControlProperty, binding);
+            if (element.GetBindingExpression(ControlProperty) == null)
+                BindingOperations.SetBinding(element, ControlProperty, binding);
         }
     }
 }
